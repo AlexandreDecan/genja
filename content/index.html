@@ -1,0 +1,30 @@
+{% extends "_twocols.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<h2>Genja</h2>
+<p>
+  Genja is a minimalist static website generator powered by Jinja2. 
+</p>
+
+
+<h3>Latest News</h3>
+
+{% from "_news.html" import news %}
+{% for item in news[:5] %}
+<h4>{{ item.title }} <span class="small">{{ (item.date|parse_date).strftime('%A, %B %d, %Y') }}</span></h4>
+<p>
+  {{ item.summary }}
+  {% if item.content %}
+    <span style="white-space: nowrap;">&mdash; <a href="{{ "news.html"|relative }}#n{{ news|length - loop.index }}">read more</a></span> 
+  {% endif %}
+</p>
+{% endfor %}
+
+{% endblock %}
+
+{% block sidebar %}
+<h2>Sidebar</h2>
+Use all the power of Jinja2 to create your website.
+{% endblock %}

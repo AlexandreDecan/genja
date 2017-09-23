@@ -1,0 +1,13 @@
+#content {
+  margin-top: 5em;
+  margin-bottom: 2em;
+}
+
+footer {
+  color: gray;
+  padding: 1em 0em 1em 0em;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
