@@ -27,10 +27,10 @@ def format_date(date, format='%Y-%m-%d'):
 
 class Genja(object):
     def __init__(self, *, templates=None, static=None, content=None, output=None):
-        self._templates = templates if templates else TEMPLATES_PATH
-        self._static = static if static else STATIC_PATH
-        self._content = content if content else CONTENT_PATH
-        self._output = output if output else OUTPUT_PATH
+        self._templates = TEMPLATES_PATH if templates is None else templates
+        self._static = STATIC_PATH if static is None else static
+        self._content = CONTENT_PATH if content is None else content
+        self._output = OUTPUT_PATH if output is None else output
         
     def clean(self):
         # Remove output directory content if it exists
