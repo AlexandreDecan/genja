@@ -1,2 +1,2 @@
 Jinja2>=2.9.6
-dateutil>=2.6.1
+python-dateutil>=2.6.1
