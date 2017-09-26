@@ -11,7 +11,7 @@
 
 <h3>Latest News</h3>
 
-{% set news = load_yaml('news.yaml')['news'] %}
+{% set news = load_yaml('news.yaml') %}
 {% for item in news[:5] %}
 <h4>{{ item.title }} <span class="small">{{ item.date.strftime('%A, %B %d, %Y') }}</span></h4>
 <p>
