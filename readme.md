@@ -27,6 +27,5 @@ By default, all the files that are contained in the ``output`` folder will be re
 While processing the templates, the context of Jinja2 will be provided with some filters and values: 
 
  - A filter ``|relative`` which translates a path relative to the root of the website to a path relative to current page location. For instance, if you use ``"A/page.html"|relative`` in ``B/test.html`` (under ``pages``), it will be translated to ``../A/page.html``. This allows you to define links without having to worry about what will be the root URL. 
-  - A filter ``|parse_date`` that takes a string representing a date and tries to convert it into a Python ``datetime`` object. This uses ``dateutil.parser.parse``. 
-  - A filter ``|format_date`` that format a Python ``datetime`` object using given format (a default one is provided). 
-  - A dyanmic value ``page`` that equals the relative path (starting from the ``content`` folder) of the page being processed. 
+ - A dyanmic value ``page`` that equals the relative path (starting from the ``content`` folder) of the page being processed. 
+ - A function ``load_yaml`` that takes a path relative to ``content/`` and returns the content of the YAML file.
