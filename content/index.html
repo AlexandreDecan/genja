@@ -11,9 +11,9 @@
 
 <h3>Latest News</h3>
 
-{% from "_news.html" import news %}
+{% set news = load_yaml('news.yaml')['news'] %}
 {% for item in news[:5] %}
-<h4>{{ item.title }} <span class="small">{{ (item.date|parse_date).strftime('%A, %B %d, %Y') }}</span></h4>
+<h4>{{ item.title }} <span class="small">{{ item.date.strftime('%A, %B %d, %Y') }}</span></h4>
 <p>
   {{ item.summary }}
   {% if item.content %}

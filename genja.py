@@ -1,8 +1,10 @@
 #!/usr/bin/python
 import os
 import shutil
-from dateutil.parser import parse as parse_date
 
+import ruamel.yaml as yaml
+
+from dateutil.parser import parse as parse_date
 from jinja2 import FileSystemLoader, Environment, contextfilter
 
 
@@ -20,9 +22,10 @@ def relative_url(context, targetpath):
     diff = os.path.relpath(targetdir, basedir)
     return os.path.join(diff, os.path.basename(targetpath))
 
-
-def format_date(date, format='%Y-%m-%d'):
-    return date.strftime(format)
+def load_yaml(filepath):
+    with open(filepath) as f:
+        loader = yaml.YAML(typ='safe', pure=True)
+        return loader.load(f.read())
 
 
 class Genja(object):
@@ -63,7 +66,6 @@ class Genja(object):
             else:
                 shutil.copy2(source, destination)
         
-    
     def _build_content(self):
         # Create environment for Jinja2
         env = Environment(
@@ -72,12 +74,10 @@ class Genja(object):
         
         # Configure environment
         env.globals.update({
-        
+            'load_yaml': lambda fp: load_yaml(os.path.join(self._content, fp))
         })
         env.filters.update({
             'relative': relative_url,
-            'parse_date': parse_date,
-            'date': format_date,
         })
         
         # Render all *.html pages if the name does not start with an underscore
