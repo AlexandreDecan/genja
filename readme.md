@@ -3,7 +3,7 @@
 ## Introduction
 
 Genja is a minimalist static website generator built on top of Jinja2. 
-It allows you to easily create static website with the ease of the powerful templating library, [Jinja2](https://jinja.pocoo.org/docs/latest/). 
+It allows you to easily create static website with the ease of the powerful templating library, [Jinja2](https://jinja.palletsprojects.com/). 
 
 ## How to use it?
 
